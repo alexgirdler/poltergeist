@@ -59,6 +59,9 @@ module Capybara::Poltergeist
 
     def find(method, selector)
       result = command('find', method, selector)
+
+      result = command('find', method, selector) if result == true
+
       result['ids'].map { |id| [result['page_id'], id] }
     end
 
